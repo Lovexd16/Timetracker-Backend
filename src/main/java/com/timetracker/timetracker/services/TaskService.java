@@ -3,6 +3,9 @@ package com.timetracker.timetracker.services;
 import java.util.List;
 
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import com.timetracker.timetracker.models.Task;
@@ -21,5 +24,13 @@ public class TaskService {
 
     public List<Task> getTasks() {
         return mongoOperations.findAll(Task.class);
+    }
+
+    public Task editTask(String id, Task task) {
+        Query query = Query.query(Criteria.where("id").is(id));
+        Update update = Update.update("taskName", task.getTaskName());
+
+        mongoOperations.updateFirst(query, update, Task.class);
+        return mongoOperations.findById(id, Task.class);
     }
 }
