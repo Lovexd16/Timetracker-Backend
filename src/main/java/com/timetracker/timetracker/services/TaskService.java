@@ -1,5 +1,7 @@
 package com.timetracker.timetracker.services;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,9 @@ public class TaskService {
 
     public Task addTask(Task task) {
         return mongoOperations.insert(task);
+    }
+
+    public List<Task> getTasks() {
+        return mongoOperations.findAll(Task.class);
     }
 }

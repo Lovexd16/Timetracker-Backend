@@ -1,5 +1,7 @@
 package com.timetracker.timetracker.controllers;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,9 +19,9 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping
-    public String getRoot() {
-        return "{'Hello': 'World!'}";
+    @GetMapping("/tasks")
+    public List<Task> getTasks() {
+        return taskService.getTasks();
     }
 
     @PostMapping("/task")
