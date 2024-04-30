@@ -3,6 +3,8 @@ package com.timetracker.timetracker.controllers;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,5 +29,10 @@ public class TaskController {
     @PostMapping("/task")
     public Task addTask(@RequestBody Task task) {
         return taskService.addTask(task);
+    }
+
+    @PatchMapping("/task/{id}")
+    public Task editTask(@PathVariable String id, @RequestBody Task task) {
+        return taskService.editTask(id, task);
     }
 }
