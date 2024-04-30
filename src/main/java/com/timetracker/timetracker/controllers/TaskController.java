@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.timetracker.timetracker.models.Task;
 import com.timetracker.timetracker.services.TaskService;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RestController
 public class TaskController {
 
