@@ -33,4 +33,9 @@ public class TaskService {
         mongoOperations.updateFirst(query, update, Task.class);
         return mongoOperations.findById(id, Task.class);
     }
+
+    public void deleteTask(String id) {
+        Query query = Query.query(Criteria.where("id").is(id));
+        mongoOperations.remove(query, Task.class);
+    }
 }
