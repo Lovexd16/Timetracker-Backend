@@ -8,10 +8,12 @@ public class Task {
     @Id
     private String id;
     private String taskName;
+    private long time;
 
-    public Task(String id, String taskName) {
+    public Task(String id, String taskName, long time) {
         this.id = id;
         this.taskName = taskName;
+        this.time = time;
     }
 
     public String getId() {
@@ -28,6 +30,14 @@ public class Task {
 
     public void setTaskName(String taskName) {
         this.taskName = taskName;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
     }
 
 }
