@@ -19,6 +19,7 @@ public class TaskService {
     }
 
     public Task addTask(Task task) {
+        task.setTime(0);
         return mongoOperations.insert(task);
     }
 
@@ -37,5 +38,13 @@ public class TaskService {
     public void deleteTask(String id) {
         Query query = Query.query(Criteria.where("id").is(id));
         mongoOperations.remove(query, Task.class);
+    }
+
+    public Task totalTimeForTask(String id, long time) {
+        Query query = Query.query(Criteria.where("id").is(id));
+        Update update = Update.update("time", time);
+
+        mongoOperations.updateFirst(query, update, Task.class);
+        return mongoOperations.findById(id, Task.class);
     }
 }

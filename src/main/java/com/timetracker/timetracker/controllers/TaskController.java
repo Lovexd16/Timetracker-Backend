@@ -1,6 +1,7 @@
 package com.timetracker.timetracker.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,6 +38,12 @@ public class TaskController {
     @PatchMapping("/task/{id}")
     public Task editTask(@PathVariable String id, @RequestBody Task task) {
         return taskService.editTask(id, task);
+    }
+
+    @PatchMapping("/task/{id}/time")
+    public Task totalTimeForTask(@PathVariable String id, @RequestBody Map<String, Long> request) {
+        long time = request.get("time");
+        return taskService.totalTimeForTask(id, time);
     }
 
     @DeleteMapping("/task/{id}")
