@@ -44,7 +44,7 @@ public class TaskController {
     @PatchMapping("/task/{id}/time")
     public Task totalTimeForTask(@PathVariable String id, @RequestBody Map<String, Long> request) {
         long time = request.get("time");
-        return taskService.lastTimeForTask(id, time);
+        return taskService.totalTimeForTask(id, time);
     }
 
     @DeleteMapping("/task/{id}")

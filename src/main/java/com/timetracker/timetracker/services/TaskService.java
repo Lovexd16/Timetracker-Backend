@@ -40,7 +40,7 @@ public class TaskService {
         mongoOperations.remove(query, Task.class);
     }
 
-    public Task lastTimeForTask(String id, long time) {
+    public Task totalTimeForTask(String id, long time) {
         Query query = Query.query(Criteria.where("id").is(id));
         Update update = new Update();
 
