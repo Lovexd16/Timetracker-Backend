@@ -32,6 +32,7 @@ public class TaskController {
 
     @PostMapping("/task")
     public Task addTask(@RequestBody Task task) {
+        task.setTime(0);
         return taskService.addTask(task);
     }
 
