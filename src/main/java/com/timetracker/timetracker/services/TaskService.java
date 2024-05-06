@@ -20,6 +20,7 @@ public class TaskService {
 
     public Task addTask(Task task) {
         task.setTime(0);
+        task.setTotalTimeSpent(0);
         return mongoOperations.insert(task);
     }
 
@@ -43,6 +44,15 @@ public class TaskService {
     public Task totalTimeForTask(String id, long time) {
         Query query = Query.query(Criteria.where("id").is(id));
         Update update = Update.update("time", time);
+
+        mongoOperations.updateFirst(query, update, Task.class);
+        return mongoOperations.findById(id, Task.class);
+    }
+
+    public Task addTime(String id, long addTime) {
+        Query query = Query.query(Criteria.where("id").is(id));
+        Update update = new Update();
+        update.inc("totalTimeSpent", addTime);
 
         mongoOperations.updateFirst(query, update, Task.class);
         return mongoOperations.findById(id, Task.class);

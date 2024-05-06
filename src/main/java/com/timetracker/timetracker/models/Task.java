@@ -9,11 +9,13 @@ public class Task {
     private String id;
     private String taskName;
     private long time;
+    private long totalTimeSpent;
 
-    public Task(String id, String taskName, long time) {
+    public Task(String id, String taskName, long time, long totalTimeSpent) {
         this.id = id;
         this.taskName = taskName;
         this.time = time;
+        this.totalTimeSpent = totalTimeSpent;
     }
 
     public String getId() {
@@ -38,6 +40,14 @@ public class Task {
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+    public long getTotalTimeSpent() {
+        return totalTimeSpent;
+    }
+
+    public void setTotalTimeSpent(long totalTimeSpent) {
+        this.totalTimeSpent = totalTimeSpent;
     }
 
 }
