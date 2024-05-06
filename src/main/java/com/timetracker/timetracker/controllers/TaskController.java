@@ -30,6 +30,12 @@ public class TaskController {
         return taskService.getTasks();
     }
 
+    @GetMapping("/task/{id}/time")
+    public long getTimeForTask(@PathVariable String id) {
+        Task task = taskService.getTaskById(id);
+        return task.getTime();
+    }
+
     @PostMapping("/task")
     public Task addTask(@RequestBody Task task) {
         task.setTime(0);

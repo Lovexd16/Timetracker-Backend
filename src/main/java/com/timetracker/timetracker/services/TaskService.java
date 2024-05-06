@@ -27,6 +27,10 @@ public class TaskService {
         return mongoOperations.findAll(Task.class);
     }
 
+    public Task getTaskById(String id) {
+        return mongoOperations.findById(id, Task.class);
+    }
+
     public Task editTask(String id, Task task) {
         Query query = Query.query(Criteria.where("id").is(id));
         Update update = Update.update("taskName", task.getTaskName());
