@@ -42,7 +42,7 @@ public class TaskService {
 
     public Task lastTimeForTask(String id, long time) {
         Query query = Query.query(Criteria.where("id").is(id));
-        Update update = new Update();
+        Update update = Update.update("time", time);
 
         mongoOperations.updateFirst(query, update, Task.class);
         return mongoOperations.findById(id, Task.class);
