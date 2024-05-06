@@ -46,6 +46,12 @@ public class TaskController {
         return taskService.totalTimeForTask(id, time);
     }
 
+    @PatchMapping("/task/{id}/addTime")
+    public Task addTime(@PathVariable String id, @RequestBody Map<String, Long> request) {
+        long addTime = request.get("time");
+        return taskService.addTime(id, addTime);
+    }
+
     @DeleteMapping("/task/{id}")
     public String deleteTask(@PathVariable String id) {
         taskService.deleteTask(id);
