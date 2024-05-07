@@ -1,6 +1,8 @@
 package com.timetracker.timetracker.services;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -28,6 +30,14 @@ public class TaskService {
 
     public Task getTaskById(String id) {
         return mongoOperations.findById(id, Task.class);
+    }
+
+    public List<LocalDate> getTaskDates() {
+        List<Task> tasks = mongoOperations.findAll(Task.class);
+        List<LocalDate> taskDates = tasks.stream()
+                .map(Task::getTaskDate)
+                .collect(Collectors.toList());
+        return taskDates;
     }
 
     public Task editTask(String id, Task task) {
