@@ -53,12 +53,18 @@ public class TaskService {
         mongoOperations.remove(query, Task.class);
     }
 
-    public Task lastTimeForTask(String id, long time) {
+    public Task totalTimeForTask(String id, long time) {
         Query query = Query.query(Criteria.where("id").is(id));
         Update update = Update.update("time", time);
 
         mongoOperations.updateFirst(query, update, Task.class);
         return mongoOperations.findById(id, Task.class);
+    }
+
+    public void softDeleteTask(String id) {
+        Query query = Query.query(Criteria.where("id").is(id));
+        Update update = Update.update("deleted", true);
+        mongoOperations.updateFirst(query, update, Task.class);
     }
 
 }

@@ -12,12 +12,14 @@ public class Task {
     private String taskName;
     private long time;
     private LocalDate taskDate;
+    private boolean deleted;
 
-    public Task(String id, String taskName, long time, LocalDate taskDate) {
+    public Task(String id, String taskName, long time, LocalDate taskDate, boolean deleted) {
         this.id = id;
         this.taskName = taskName;
         this.time = time;
         this.taskDate = taskDate;
+        this.deleted = deleted;
     }
 
     public String getId() {
@@ -50,6 +52,14 @@ public class Task {
 
     public void setTaskDate(LocalDate taskDate) {
         this.taskDate = taskDate;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
 }
