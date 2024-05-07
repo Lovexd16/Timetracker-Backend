@@ -28,6 +28,11 @@ public class TaskService {
         return mongoOperations.findAll(Task.class);
     }
 
+    public List<Task> getActiveTasks() {
+        Query query = Query.query(Criteria.where("deleted").is(false));
+        return mongoOperations.find(query, Task.class);
+    }
+
     public Task getTaskById(String id) {
         return mongoOperations.findById(id, Task.class);
     }
