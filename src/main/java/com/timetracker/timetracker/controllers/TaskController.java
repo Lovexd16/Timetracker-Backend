@@ -36,6 +36,11 @@ public class TaskController {
         return taskService.getActiveTasks();
     }
 
+    @GetMapping("/tasks/deleted")
+    public List<Task> getDeletedTasks() {
+        return taskService.getDeletedTasks();
+    }
+
     @GetMapping("/task/{id}/time")
     public long getTimeForTask(@PathVariable String id) {
         Task task = taskService.getTaskById(id);
