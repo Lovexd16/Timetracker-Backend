@@ -57,12 +57,18 @@ public class TaskController {
     @PatchMapping("/task/{id}/time")
     public Task totalTimeForTask(@PathVariable String id, @RequestBody Map<String, Long> request) {
         long time = request.get("time");
-        return taskService.lastTimeForTask(id, time);
+        return taskService.totalTimeForTask(id, time);
     }
 
     @DeleteMapping("/task/{id}")
     public String deleteTask(@PathVariable String id) {
         taskService.deleteTask(id);
         return "{'message': 'Task with id " + id + "has been deleted.'}";
+    }
+
+    @DeleteMapping("/task/{id}/soft")
+    public String softDeleteTask(@PathVariable String id) {
+        taskService.softDeleteTask(id);
+        return "{'message': 'Task with id " + id + " has been soft deleted.'}";
     }
 }
