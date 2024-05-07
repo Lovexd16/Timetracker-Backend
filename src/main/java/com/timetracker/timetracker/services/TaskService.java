@@ -19,7 +19,6 @@ public class TaskService {
     }
 
     public Task addTask(Task task) {
-        task.setTime(0);
         return mongoOperations.insert(task);
     }
 
