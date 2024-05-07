@@ -33,6 +33,11 @@ public class TaskService {
         return mongoOperations.find(query, Task.class);
     }
 
+    public List<Task> getDeletedTasks() {
+        Query query = Query.query(Criteria.where("deleted").is(true));
+        return mongoOperations.find(query, Task.class);
+    }
+
     public Task getTaskById(String id) {
         return mongoOperations.findById(id, Task.class);
     }
