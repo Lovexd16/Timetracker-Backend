@@ -3,7 +3,9 @@ package com.timetracker.timetracker.controllers;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import org.springframework.cglib.core.Local;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +37,11 @@ public class TaskController {
     public long getTimeForTask(@PathVariable String id) {
         Task task = taskService.getTaskById(id);
         return task.getTime();
+    }
+
+    @GetMapping("/tasks/dates")
+    public List<LocalDate> getTaskDates() {
+        return taskService.getTaskDates();
     }
 
     @PostMapping("/task")
