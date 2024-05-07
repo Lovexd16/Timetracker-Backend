@@ -1,5 +1,6 @@
 package com.timetracker.timetracker.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +40,7 @@ public class TaskController {
     @PostMapping("/task")
     public Task addTask(@RequestBody Task task) {
         task.setTime(0);
+        task.setTaskDate(LocalDate.now());
         return taskService.addTask(task);
     }
 

@@ -1,5 +1,7 @@
 package com.timetracker.timetracker.models;
 
+import java.time.LocalDate;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,11 +11,13 @@ public class Task {
     private String id;
     private String taskName;
     private long time;
+    private LocalDate taskDate;
 
-    public Task(String id, String taskName, long time) {
+    public Task(String id, String taskName, long time, LocalDate taskDate) {
         this.id = id;
         this.taskName = taskName;
         this.time = time;
+        this.taskDate = taskDate;
     }
 
     public String getId() {
@@ -38,6 +42,14 @@ public class Task {
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+    public LocalDate getTaskDate() {
+        return taskDate;
+    }
+
+    public void setTaskDate(LocalDate taskDate) {
+        this.taskDate = taskDate;
     }
 
 }
