@@ -11,8 +11,8 @@ public class Task {
     private String id;
     private String taskName;
     private long time;
-    private LocalDate taskDate;
-    private boolean deleted;
+    private LocalDate taskDate; // För att kunna visa skapelse-datum för tasks.
+    private boolean deleted; // För att kunna soft-deleta.
 
     public Task(String id, String taskName, long time, LocalDate taskDate, boolean deleted) {
         this.id = id;
