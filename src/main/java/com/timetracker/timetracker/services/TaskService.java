@@ -77,4 +77,13 @@ public class TaskService {
         mongoOperations.updateFirst(query, update, Task.class);
     }
 
+    public void softDeleteMonday() {
+        LocalDate checkDay = LocalDate.now();
+        if (checkDay.getDayOfWeek() == java.time.DayOfWeek.MONDAY) {
+            Query query = Query.query(Criteria.where("deleted").is(false));
+            Update update = Update.update("deleted", true);
+            mongoOperations.updateMulti(query, update, Task.class);
+        }
+    }
+
 }
